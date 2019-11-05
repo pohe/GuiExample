@@ -1,0 +1,59 @@
+﻿<Page
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:GuiExample"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:Custom="using:Microsoft.Xaml.Interactivity" xmlns:Custom1="using:Microsoft.Xaml.Interactions.Core"
+    x:Class="GuiExample.WeatherPage"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*"/>
+            <ColumnDefinition Width="5*"/>
+
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="2*"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Border Background="Red"/>
+        <Border Grid.Column ="1" Background="Green"/>
+        <Border Grid.Row="1" Grid.ColumnSpan="2" Background="Blue"/>
+        <!--<TextBox Grid.Row="1" Text="Hej med jer"></TextBox>-->
+
+        <StackPanel Grid.Column="1" Margin="40,0,0,0"  VerticalAlignment="Center">
+            <TextBlock Foreground="White" FontSize="25" Text="Today - 64° F"/>
+            <TextBlock Foreground="White" FontSize="25" Text="Partially Cloudy"/>
+            <TextBlock Foreground="White" FontSize="25" Text="Precipitation: 25%"/>
+        </StackPanel>
+        <StackPanel Grid.Row="1" Grid.ColumnSpan="2" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock Foreground="White" FontSize="25" Text="High: 66°" Margin="0,0,20,0"/>
+            <TextBlock Foreground="White" FontSize="25" Text="Low: 43°" Margin="0,0,20,0"/>
+            <TextBlock Foreground="White" FontSize="25" Text="Feels like: 63°"/>
+        </StackPanel>
+        <StackPanel Orientation="Vertical"  HorizontalAlignment="Center" Spacing="20">
+            <Image  Margin="20, 30, 20, 40" Width="200" Height="200" Source="Assets/partially-cloudy.png"/>
+            <StackPanel Spacing="20" Orientation="Horizontal" HorizontalAlignment="Center">
+                <TextBlock Text="Angiv navn" Margin="10"/>
+                <TextBox Text="Navn" Width="200" Height="50"/>
+            </StackPanel>
+            <Button Content="Goto mainpage" HorizontalAlignment="center" FontWeight="Bold" FontSize="24" >
+                <Button.Background>
+                    <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                        <GradientStop Color="Black"/>
+                        <GradientStop Color="White" Offset="1"/>
+                    </LinearGradientBrush>
+                </Button.Background>
+                <Custom:Interaction.Behaviors>
+                    <Custom1:EventTriggerBehavior EventName="Click">
+                        <Custom1:NavigateToPageAction TargetPage="GuiExample.MainPage"/>
+                    </Custom1:EventTriggerBehavior>
+                </Custom:Interaction.Behaviors>
+            </Button>
+        </StackPanel>
+    </Grid>
+</Page>
